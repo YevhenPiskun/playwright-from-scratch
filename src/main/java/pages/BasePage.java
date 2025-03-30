@@ -8,6 +8,8 @@ public abstract class BasePage {
     protected static PlaywrightFactory playwrightFactory = PlaywrightFactory.getInstance();
     protected Page page;
 
+    protected String title = ".title";
+
     protected BasePage() {
         this.page = playwrightFactory.getPage();
     }

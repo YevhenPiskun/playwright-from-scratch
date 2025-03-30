@@ -12,6 +12,7 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.12.1'
     implementation 'com.microsoft.playwright:playwright:1.50.0'
+    testImplementation("org.assertj:assertj-core:3.27.2")
 }
 
 test {
