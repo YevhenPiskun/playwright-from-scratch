@@ -39,14 +39,18 @@ public class PlaywrightFactory {
     }
 
     private BrowserContext getBrowserContext() {
-        browserContext = getBrowser().newContext(
-                new Browser.NewContextOptions().setViewportSize(1920, 1080));
-        browserContext.setDefaultTimeout(10000);
+        if (browserContext == null) {
+            browserContext = getBrowser().newContext(
+                    new Browser.NewContextOptions().setViewportSize(1920, 1080));
+            browserContext.setDefaultTimeout(10000);
+        }
         return browserContext;
     }
 
     public Page getPage() {
-        page = getBrowserContext().newPage();
+        if (page == null) {
+            page = getBrowserContext().newPage();
+        }
         return page;
     }
 

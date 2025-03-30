@@ -17,4 +17,16 @@ public class LoginSteps extends BaseSteps {
     public void verifyThatLoginPageOpened() {
         loginPage.verifyThatPageOpened();
     }
+
+    public void enterUsername(String userName) {
+        loginPage.inputUserName(userName);
+    }
+
+    public void enterPassword(String password) {
+        loginPage.inputPassword(password);
+    }
+
+    public void pressLoginButton() {
+        loginPage.pressLoginButton();
+    }
 }
