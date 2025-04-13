@@ -1,6 +1,10 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Test;
 import steps.*;
 
+@Epic("Checkout test suite")
 public class CheckoutTest extends BaseTest {
 
     LoginSteps loginSteps = new LoginSteps();
@@ -10,6 +14,8 @@ public class CheckoutTest extends BaseTest {
     CheckOutStepTwoSteps checkOutStepTwoSteps = new CheckOutStepTwoSteps();
 
     @Test
+    @Feature("Checkout cart test")
+    @Description("Checkout products is cart")
     public void checkoutTest() {
         loginSteps.openLoginPage();
         loginSteps.enterUsername(userName);

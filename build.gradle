@@ -1,20 +1,36 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.12.0'
 }
 
 group = 'org.example'
 version = '1.0-SNAPSHOT'
+
+def allureVersion = "2.29.1"
+def aspectJVersion = "1.9.20.1"
+
+configurations {
+    agent {
+        canBeResolved = true
+        canBeConsumed = true
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.12.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.12.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.12.2'
     implementation 'com.microsoft.playwright:playwright:1.50.0'
     testImplementation("org.assertj:assertj-core:3.27.2")
+    implementation "io.qameta.allure:allure-bom:$allureVersion"
+    implementation "io.qameta.allure:allure-junit5:$allureVersion"
+    agent "org.aspectj:aspectjweaver:$aspectJVersion"
 }
 
 test {
     useJUnitPlatform()
+    jvmArgs = [ "-javaagent:${configurations.agent.singleFile}" ]
 }

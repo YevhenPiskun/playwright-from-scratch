@@ -12,8 +12,8 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 public class ProductPage extends BasePage {
 
     private String sortButton = ".product_sort_container";
-    private String optionAz = "option[value='az']";
-    private String optionZa = "option[value='za']";
+    private String optionAz = "Name (A to Z)";
+    private String optionZa = "Name (Z to A)";
     private String itemsNames = ".inventory_item_name";
     private String cartButton = ".shopping_cart_link";
     private static final String ADD_TO_CART_BUTTON = ".inventory_item:nth-of-type(%s) button";
@@ -32,10 +32,10 @@ public class ProductPage extends BasePage {
         page.locator(sortButton).click();
         switch (sortingType) {
             case A_TO_Z:
-                page.locator(optionAz).click();
+                page.getByText(optionAz).click();
                 break;
             case Z_TO_A:
-                page.locator(optionZa).click();
+                page.getByText(optionZa).click();
                 break;
             default:
                 throw new RuntimeException("Sorting not supported");
